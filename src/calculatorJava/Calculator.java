@@ -12,9 +12,9 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener {
 	
-	boolean isOperatorClicked=false;
+	boolean isOperatorClicked=false, isPositive=true;
 	
-	String isOperator, oldValue, newValue;
+	String isOperator, oldValue, newValue, negativeValue;
 	
 	float result;
 	
@@ -342,7 +342,14 @@ public class Calculator implements ActionListener {
 		}else if(e.getSource()==acButton) {
 			displayLabel.setText("0");
 		}else if(e.getSource()==plusMinusButton) {
-			
+			if(isPositive) {
+				displayLabel.setText("-"+displayLabel.getText());
+				isPositive=false;
+			}else {
+				negativeValue=displayLabel.getText();
+				displayLabel.setText(negativeValue.substring(1));
+				isPositive=true;
+			}
 		}else if(e.getSource()==divideButton) {
 			isOperatorClicked=true;
 			isOperator="/";
