@@ -12,7 +12,7 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener {
 	
-	boolean isOperatorClicked=false, isPositive=true;
+	boolean isOperatorClicked=false, isPositive=true, isCalculateInitialized=false;
 	
 	String isOperator, oldValue, newValue, negativeValue;
 	
@@ -322,25 +322,17 @@ public class Calculator implements ActionListener {
 
 			newValue=displayLabel.getText();
 			
-			float firstValue=Float.parseFloat(oldValue);
-			float secondValue=Float.parseFloat(newValue);
-			
-			if(isOperator=="+") {
-				result=firstValue+secondValue;
-			}else if(isOperator=="-") {
-				result=firstValue-secondValue;
-			}else if(isOperator=="*") {
-				result=firstValue*secondValue;
-			}else if(isOperator=="/") {
-				result=firstValue/secondValue;
-			}
+			result=Calculate(newValue);
 			
 			displayLabel.setText(result+""); 
+			
+			isCalculateInitialized=false;
 			
 		}else if(e.getSource()==clearButton) {
 			displayLabel.setText("0");
 		}else if(e.getSource()==acButton) {
 			displayLabel.setText("0");
+			isCalculateInitialized=false;
 		}else if(e.getSource()==plusMinusButton) {
 			if(isPositive) {
 				displayLabel.setText("-"+displayLabel.getText());
@@ -351,23 +343,93 @@ public class Calculator implements ActionListener {
 				isPositive=true;
 			}
 		}else if(e.getSource()==divideButton) {
-			isOperatorClicked=true;
-			isOperator="/";
-			oldValue=displayLabel.getText();
+			if(isCalculateInitialized) {
+				newValue=displayLabel.getText();
+				
+				result=Calculate(newValue);
+				
+				displayLabel.setText(result+"");
+				
+				isOperatorClicked=true;
+				oldValue=result+"";
+				isOperator="/";
+			}else {
+				isOperatorClicked=true;
+				isCalculateInitialized=true;
+				isOperator="/";
+				oldValue=displayLabel.getText();
+			}
 		}else if(e.getSource()==plusButton) {
-			isOperatorClicked=true;
-			isOperator="+";
-			oldValue=displayLabel.getText();
+			if(isCalculateInitialized) {
+				newValue=displayLabel.getText();
+				
+				result=Calculate(newValue);
+				
+				displayLabel.setText(result+"");
+				
+				isOperatorClicked=true;
+				oldValue=result+"";
+				isOperator="+";
+			}else {
+				isOperatorClicked=true;
+				isCalculateInitialized=true;
+				isOperator="+";
+				oldValue=displayLabel.getText();
+			}
 		}else if(e.getSource()==multipleButton) {
-			isOperatorClicked=true;
-			isOperator="*";
-			oldValue=displayLabel.getText();
+			if(isCalculateInitialized) {
+				newValue=displayLabel.getText();
+				
+				result=Calculate(newValue);
+				
+				displayLabel.setText(result+"");
+				
+				isOperatorClicked=true;
+				oldValue=result+"";
+				isOperator="*";
+			}else {
+				isOperatorClicked=true;
+				isCalculateInitialized=true;
+				isOperator="*";
+				oldValue=displayLabel.getText();
+			}
 		}else if(e.getSource()==minusButton) {
-			isOperatorClicked=true;
-			isOperator="-";
-			oldValue=displayLabel.getText();
+			if(isCalculateInitialized) {
+				newValue=displayLabel.getText();
+				
+				result=Calculate(newValue);
+				
+				displayLabel.setText(result+"");
+				
+				isOperatorClicked=true;
+				oldValue=result+"";
+				isOperator="-";
+			}else {
+				isOperatorClicked=true;
+				isCalculateInitialized=true;
+				isOperator="-";
+				oldValue=displayLabel.getText();
+			}
 		}
 		
+	}
+	
+	public float Calculate(String value) {
+		
+		float firstValue=Float.parseFloat(oldValue);
+		float secondValue=Float.parseFloat(value);
+		
+		if(isOperator=="+") {
+			result=firstValue+secondValue;
+		}else if(isOperator=="-") {
+			result=firstValue-secondValue;
+		}else if(isOperator=="*") {
+			result=firstValue*secondValue;
+		}else if(isOperator=="/") {
+			result=firstValue/secondValue;
+		}
+		
+		return result;
 	}
 	
 }
