@@ -13,9 +13,22 @@ A Simple Calcullator Using Swing
 
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome.
 
-Please make sure to update tests as appropriate.
+### Bugs
+
+Found a bug? Have a problem with swingCalculator? Please check past issues, maybe someone already had that problem. If you don't find similar issue create new, but remember to add accurate informations so that I can dig into it straight away. If it's possible add CodePen example that presents called issue.
+
+Please make sure to do appropriate tests.
+
+### Commiting changes
+
+If all your tests are passing then you're good to go. Commit your changes.
+Create well described Pull Request with as many informations as possible and wait for my answer :) I'd be happy to make a code review and put some thougths.
+
+## ❔Questions
+
+If you found a bug, have a question or an idea, please check contribution guide and don't hesitate to create new issues.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
