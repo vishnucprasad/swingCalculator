@@ -336,9 +336,11 @@ public class Calculator implements ActionListener {
 		}else if(e.getSource()==clearButton) {
 			displayLabel.setText("0");
 			isDotActive=false;
+			isPositive=true;
 		}else if(e.getSource()==acButton) {
 			displayLabel.setText("0");
 			isCalculateInitialized=false;
+			isPositive=true;
 			isDotActive=false;
 		}else if(e.getSource()==plusMinusButton) {
 			if(isPositive) {
