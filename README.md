@@ -4,7 +4,7 @@ A Simple Calcullator Using Swing
 
 ## JAVA Project
 
-[Go to CHANGELOG](CHANGELOG)
+[Go to CHANGELOG](CHANGELOG.md)
 
 ## ❔Questions
 
