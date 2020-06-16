@@ -12,7 +12,7 @@ import javax.swing.SwingConstants;
 
 public class Calculator implements ActionListener {
 	
-	boolean isOperatorClicked=false, isPositive=true, isCalculateInitialized=false;
+	boolean isOperatorClicked=false, isPositive=true, isCalculateInitialized=false, isDotActive=false;
 	
 	String isOperator, oldValue, newValue, negativeValue;
 	
@@ -312,11 +312,14 @@ public class Calculator implements ActionListener {
 				}
 			}
 		}else if(e.getSource()==dotButton) {
-			if(isOperatorClicked) {
-				displayLabel.setText("0.");
-				isOperatorClicked=false;
-			}else {
-				displayLabel.setText(displayLabel.getText()+".");
+			if (isDotActive==false) {
+				if(isOperatorClicked) {
+					displayLabel.setText("0.");
+					isOperatorClicked=false;
+				}else {
+					displayLabel.setText(displayLabel.getText()+".");
+				}
+				isDotActive=true;
 			}
 		}else if(e.getSource()==equalButton) {
 
@@ -328,11 +331,15 @@ public class Calculator implements ActionListener {
 			
 			isCalculateInitialized=false;
 			
+			isDotActive=false;
+			
 		}else if(e.getSource()==clearButton) {
 			displayLabel.setText("0");
+			isDotActive=false;
 		}else if(e.getSource()==acButton) {
 			displayLabel.setText("0");
 			isCalculateInitialized=false;
+			isDotActive=false;
 		}else if(e.getSource()==plusMinusButton) {
 			if(isPositive) {
 				displayLabel.setText("-"+displayLabel.getText());
@@ -359,6 +366,7 @@ public class Calculator implements ActionListener {
 				isOperator="/";
 				oldValue=displayLabel.getText();
 			}
+			isDotActive=false;
 		}else if(e.getSource()==plusButton) {
 			if(isCalculateInitialized) {
 				newValue=displayLabel.getText();
@@ -376,6 +384,7 @@ public class Calculator implements ActionListener {
 				isOperator="+";
 				oldValue=displayLabel.getText();
 			}
+			isDotActive=false;
 		}else if(e.getSource()==multipleButton) {
 			if(isCalculateInitialized) {
 				newValue=displayLabel.getText();
@@ -393,6 +402,7 @@ public class Calculator implements ActionListener {
 				isOperator="*";
 				oldValue=displayLabel.getText();
 			}
+			isDotActive=false;
 		}else if(e.getSource()==minusButton) {
 			if(isCalculateInitialized) {
 				newValue=displayLabel.getText();
@@ -410,6 +420,7 @@ public class Calculator implements ActionListener {
 				isOperator="-";
 				oldValue=displayLabel.getText();
 			}
+			isDotActive=false;
 		}
 		
 	}
