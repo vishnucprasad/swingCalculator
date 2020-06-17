@@ -322,16 +322,16 @@ public class Calculator implements ActionListener {
 				isDotActive=true;
 			}
 		}else if(e.getSource()==equalButton) {
-
-			newValue=displayLabel.getText();
-			
-			result=Calculate(newValue);
-			
-			displayLabel.setText(result+""); 
-			
-			isCalculateInitialized=false;
-			
-			isDotActive=false;
+				
+				newValue=displayLabel.getText();
+				
+				result=Calculate(newValue);
+				
+				displayLabel.setText(result+""); 
+				
+				isCalculateInitialized=false;
+				
+				isDotActive=false;
 			
 		}else if(e.getSource()==clearButton) {
 			displayLabel.setText("0");
@@ -342,6 +342,7 @@ public class Calculator implements ActionListener {
 			isCalculateInitialized=false;
 			isPositive=true;
 			isDotActive=false;
+			oldValue="0";
 		}else if(e.getSource()==plusMinusButton) {
 			if(isPositive) {
 				displayLabel.setText("-"+displayLabel.getText());
@@ -353,15 +354,19 @@ public class Calculator implements ActionListener {
 			}
 		}else if(e.getSource()==divideButton) {
 			if(isCalculateInitialized) {
-				newValue=displayLabel.getText();
-				
-				result=Calculate(newValue);
-				
-				displayLabel.setText(result+"");
-				
-				isOperatorClicked=true;
-				oldValue=result+"";
-				isOperator="/";
+				if(isOperatorClicked) {
+					isOperator="/";
+				}else {
+					newValue=displayLabel.getText();
+					
+					result=Calculate(newValue);
+					
+					displayLabel.setText(result+"");
+					
+					isOperatorClicked=true;
+					oldValue=result+"";
+					isOperator="/";
+				}
 			}else {
 				isOperatorClicked=true;
 				isCalculateInitialized=true;
@@ -371,15 +376,19 @@ public class Calculator implements ActionListener {
 			isDotActive=false;
 		}else if(e.getSource()==plusButton) {
 			if(isCalculateInitialized) {
-				newValue=displayLabel.getText();
-				
-				result=Calculate(newValue);
-				
-				displayLabel.setText(result+"");
-				
-				isOperatorClicked=true;
-				oldValue=result+"";
-				isOperator="+";
+				if(isOperatorClicked) {
+					isOperator="+";
+				}else {
+					newValue=displayLabel.getText();
+					
+					result=Calculate(newValue);
+					
+					displayLabel.setText(result+"");
+					
+					isOperatorClicked=true;
+					oldValue=result+"";
+					isOperator="+";
+				}
 			}else {
 				isOperatorClicked=true;
 				isCalculateInitialized=true;
@@ -389,15 +398,19 @@ public class Calculator implements ActionListener {
 			isDotActive=false;
 		}else if(e.getSource()==multipleButton) {
 			if(isCalculateInitialized) {
-				newValue=displayLabel.getText();
-				
-				result=Calculate(newValue);
-				
-				displayLabel.setText(result+"");
-				
-				isOperatorClicked=true;
-				oldValue=result+"";
-				isOperator="*";
+				if (isOperatorClicked) {
+					isOperator="*";
+				}else {
+					newValue=displayLabel.getText();
+					
+					result=Calculate(newValue);
+					
+					displayLabel.setText(result+"");
+					
+					isOperatorClicked=true;
+					oldValue=result+"";
+					isOperator="*";
+				}
 			}else {
 				isOperatorClicked=true;
 				isCalculateInitialized=true;
@@ -407,15 +420,19 @@ public class Calculator implements ActionListener {
 			isDotActive=false;
 		}else if(e.getSource()==minusButton) {
 			if(isCalculateInitialized) {
-				newValue=displayLabel.getText();
-				
-				result=Calculate(newValue);
-				
-				displayLabel.setText(result+"");
-				
-				isOperatorClicked=true;
-				oldValue=result+"";
-				isOperator="-";
+				if (isOperatorClicked) {
+					isOperator="-";
+				}else {
+					newValue=displayLabel.getText();
+					
+					result=Calculate(newValue);
+					
+					displayLabel.setText(result+"");
+					
+					isOperatorClicked=true;
+					oldValue=result+"";
+					isOperator="-";
+				}
 			}else {
 				isOperatorClicked=true;
 				isCalculateInitialized=true;
